@@ -39,7 +39,7 @@ class firewall_rules::pre {
 		recent    => 'update',
 		rseconds  => 60,
 		rhitcount => 4,
-		action    => 'deny',
+		action    => 'drop',
 	}
 
 	define firewall_rule_all_from_ip {
