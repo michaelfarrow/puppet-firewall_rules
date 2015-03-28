@@ -22,10 +22,24 @@ class firewall_rules::pre {
 		action  => 'accept',
 	}
 
-	firewall { '010 allow ssh from all':
-		dport   => '22',
+	firewall { '011 allow ssh':
+		dport   => 22,
+		proto   => 'tcp',
+		action  => 'accept',
+	}
+
+	firewall { '010 ratelimit ssh - set':
+		dport  => 22,
 		proto  => 'tcp',
-		action => 'accept',
+		recent => 'set',
+	}
+	firewall { '010 ratelimit ssh - update':
+		dport     => 22,
+		proto     => 'tcp',
+		recent    => 'update',
+		rseconds  => 60,
+		rhitcount => 4,
+		action    => 'deny',
 	}
 
 	define firewall_rule_all_from_ip {
