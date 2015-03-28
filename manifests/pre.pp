@@ -33,6 +33,7 @@ class firewall_rules::pre {
 		proto  => 'tcp',
 		recent => 'set',
 	}
+
 	firewall { '010 ratelimit ssh - update':
 		dport     => 22,
 		proto     => 'tcp',
