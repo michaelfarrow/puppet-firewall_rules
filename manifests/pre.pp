@@ -38,8 +38,8 @@ class firewall_rules::pre {
 		dport     => 22,
 		proto     => 'tcp',
 		recent    => 'update',
-		rseconds  => 300,
-		rhitcount => 4,
+		rseconds  => 3600,
+		rhitcount => 3,
 		action    => 'drop',
 	}
 
