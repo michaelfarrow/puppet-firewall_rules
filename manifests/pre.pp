@@ -28,20 +28,20 @@ class firewall_rules::pre {
 		action  => 'accept',
 	}
 
-	firewall { '010 ratelimit ssh - set':
-		dport  => 22,
-		proto  => 'tcp',
-		recent => 'set',
-	}
+	# firewall { '010 ratelimit ssh - set':
+	# 	dport  => 22,
+	# 	proto  => 'tcp',
+	# 	recent => 'set',
+	# }
 
-	firewall { '010 ratelimit ssh - update':
-		dport     => 22,
-		proto     => 'tcp',
-		recent    => 'update',
-		rseconds  => 3600,
-		rhitcount => 3,
-		action    => 'drop',
-	}
+	# firewall { '010 ratelimit ssh - update':
+	# 	dport     => 22,
+	# 	proto     => 'tcp',
+	# 	recent    => 'update',
+	# 	rseconds  => 3600,
+	# 	rhitcount => 3,
+	# 	action    => 'drop',
+	# }
 
 	define firewall_rule_all_from_ip {
 		firewall { "011 allow traffic from ip: ${name}":
