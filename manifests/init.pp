@@ -8,7 +8,6 @@ class firewall_rules {
 
 	class { 'fail2ban':
 		bantime => 86400,
-		config_dir_purge  => true,
-		config_dir_source => "puppet:///modules/fail2ban/${::lsbdistcodename}/etc/fail2ban",
+		config_file_source => "puppet:///modules/fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf",
 	}
 }
