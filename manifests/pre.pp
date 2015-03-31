@@ -4,7 +4,7 @@ class firewall_rules::pre {
 		require => undef,
 	}
 
-	firewallchain { 'fail2ban-ssh':
+	firewallchain { 'fail2ban-ssh:filter:IPv4':
 		purge  => false,
 	}
 
