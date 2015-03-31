@@ -9,7 +9,7 @@ class firewall_rules::pre {
 		purge  => false,
 	}
 
-	firewall { '9001 fail2ban-ssh':
+	firewall { '003 fail2ban-ssh':
 		dport   => 22,
 		proto   => 'tcp',
 		chain   => 'INPUT',
