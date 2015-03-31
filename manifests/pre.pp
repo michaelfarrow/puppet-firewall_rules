@@ -19,8 +19,7 @@ class firewall_rules::pre {
 		purge  => true,
 		ignore => [
 	    # ignore the fail2ban jump rule
-	    'fail2ban-ssh',
-	    'fail2ban-ssh-ddos',
+	    'fail2ban',
 	    # ignore any rules with "ignore" (case insensitive) in the comment in the rule
 	    '--comment "[^"](?i:ignore)[^"]"',
     ],
