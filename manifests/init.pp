@@ -8,4 +8,6 @@ class firewall_rules {
 	}
 	class { ['firewall_rules::pre', 'firewall_rules::post']: }
 	class { 'firewall': }
+
+	class { 'denyhosts': }
 }
