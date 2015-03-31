@@ -11,7 +11,8 @@ class firewall_rules::pre {
 	firewall { '9001 fail2ban-ssh':
 		dport   => 22,
 		proto   => 'tcp',
-		action  => 'fail2ban-ssh',
+		chain   => 'INPUT',
+		jump    => 'fail2ban-ssh',
 	}
 
 	# Default firewall rules
