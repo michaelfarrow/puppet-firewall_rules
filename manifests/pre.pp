@@ -5,6 +5,7 @@ class firewall_rules::pre {
 	}
 
 	firewallchain { 'fail2ban-ssh:filter:IPv4':
+		ensure => present,
 		purge  => false,
 	}
 
