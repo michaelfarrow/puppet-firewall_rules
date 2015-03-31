@@ -1,7 +1,4 @@
 class firewall_rules {
-	resources { "firewall":
-		purge => true
-	}
 	Firewall {
 		before  => Class['firewall_rules::post'],
 		require => Class['firewall_rules::pre'],
