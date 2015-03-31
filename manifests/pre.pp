@@ -29,14 +29,12 @@ class firewall_rules::pre {
 	}
 
 	firewall { '010 ratelimit ssh - set':
-		ensure => absent,
 		dport  => 22,
 		proto  => 'tcp',
 		recent => 'set',
 	}
 
 	firewall { '010 ratelimit ssh - update':
-		ensure => absent,
 		dport     => 22,
 		proto     => 'tcp',
 		recent    => 'update',
