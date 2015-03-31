@@ -9,9 +9,21 @@ class firewall_rules::pre {
 		purge  => false,
 	}
 
+	firewallchain { 'fail2ban-ssh-ddos:filter:IPv4':
+		ensure => present,
+		purge  => false,
+	}
+
 	firewallchain { 'INPUT:filter:IPv4':
 		ensure => present,
 		purge  => true,
+		ignore => [
+	    # ignore the fail2ban jump rule
+	    'fail2ban-ssh',
+	    'fail2ban-ssh-ddos',
+	    # ignore any rules with "ignore" (case insensitive) in the comment in the rule
+	    '--comment "[^"](?i:ignore)[^"]"',
+    ],
 	}
 
 	firewallchain { 'FORWARD:filter:IPv4':
@@ -22,13 +34,6 @@ class firewall_rules::pre {
 	firewallchain { 'OUTPUT:filter:IPv4':
 		ensure => present,
 		purge  => true,
-	}
-
-	firewall { '003 fail2ban-ssh':
-		dport   => 22,
-		proto   => 'tcp',
-		chain   => 'INPUT',
-		jump    => 'fail2ban-ssh',
 	}
 
 	# Default firewall rules
