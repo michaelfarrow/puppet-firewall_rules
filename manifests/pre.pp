@@ -4,6 +4,16 @@ class firewall_rules::pre {
 		require => undef,
 	}
 
+	firewallchain { 'INPUT:filter:IPv4':
+	  purge  => true,
+	  ignore => [
+		 # ignore the fail2ban jump rule
+		 '-j fail2ban-ssh',
+		 # ignore any rules with "ignore" (case insensitive) in the comment in the rule
+		 '--comment "[^"](?i:ignore)[^"]"',
+		 ],
+	}
+
 	# Default firewall rules
 	firewall { '000 accept all icmp':
 		proto   => 'icmp',
