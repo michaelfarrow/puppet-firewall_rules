@@ -8,6 +8,6 @@ class firewall_rules {
 
 	class { 'fail2ban':
 		bantime => 86400,
-		config_file_source => template"fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb",
+		config_file_source => template("fail2ban/${::lsbdistcodename}/etc/fail2ban/jail.conf.erb"),
 	}
 }
