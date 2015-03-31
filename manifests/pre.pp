@@ -4,14 +4,14 @@ class firewall_rules::pre {
 		require => undef,
 	}
 
-	firewallchain { 'INPUT:filter:IPv4':
-	  purge  => true,
-	  ignore => [
-		 # ignore the fail2ban jump rule
-		 '-j fail2ban-ssh',
-		 # ignore any rules with "ignore" (case insensitive) in the comment in the rule
-		 '--comment "[^"](?i:ignore)[^"]"',
-		 ],
+	firewallchain { 'fail2ban-ssh':
+		purge  => false,
+	}
+
+	firewall { '9001 fail2ban-ssh':
+		dport   => 22,
+		proto   => 'tcp',
+		action  => 'fail2ban-ssh',
 	}
 
 	# Default firewall rules
