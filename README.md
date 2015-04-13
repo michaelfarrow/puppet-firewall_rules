@@ -5,6 +5,6 @@ mod "puppetlabs/firewall", "1.4.0"
 
 # dep: puppetlabs/firewall
 mod "weyforth/firewall_rules",
-	git: "https://weyforth@bitbucket.org/weyforth/puppet-firewall_rules.git",
+	git: "https://github.com/weyforth/puppet-firewall_rules.git",
 	ref: "master"
 ```
